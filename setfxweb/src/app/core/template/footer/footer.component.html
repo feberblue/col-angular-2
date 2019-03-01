@@ -1,0 +1,25 @@
+<footer class="footer" style="background-color: #CCC;">
+  <div class="container">
+    <div class="row">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown" title="Check Services OnLine">       
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fa fa-desktop" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" [routerLink]="['/swap']"><i class="fa fa-circle" [ngStyle]="{'color': _serSwap.onLineColor}" ></i> SWAP Service</a>
+            <!--<a class="dropdown-item" [routerLink]="['/status']"><i class="fa fa-circle" [ngStyle]="{'color': _serForward.onLineColor}"></i> Forward Service</a>-->
+            <a class="dropdown-item" [routerLink]="['/swap']"><i class="fa fa-circle" style="color:red"></i> Auth Service</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-md-4 col-lg-4" style="font-size: 12px;">
+        &copy; 2019 ScotiaBank Colpatria
+      </div>
+
+    </div>
+  </div>
+</footer>

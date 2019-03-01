@@ -1,0 +1,128 @@
+<app-navbar></app-navbar>
+<div style="padding-top: 10px">
+  <div class="space">
+    <div class="card border-primary">
+      <h5 class="card-header  bg-primary text-white">
+        Derivate / SWAP
+      </h5>
+      <div class="card-body">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-inline">
+            <label class="form-label" for="cboFilter">Deal Type : </label>
+            <select [(ngModel)]="filterData" #cboFilter class="form-control" id="cboFilter" (ngModelChange)="changeData($event)">
+              <option *ngFor="let item of objArray" [value]="item">{{item}}</option>
+            </select>
+          </div>
+        </div>
+        <hr class="border-primary">
+        <div class="col-sm-12 col-md-12">
+          <div >
+            <!-- BEGIN DATATABLE MATERIAL-->
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+
+            <div >
+              <mat-table [dataSource]="dataSource" matSort >
+
+                <ng-container matColumnDef="Consecutive">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header class="titleColumn"> Consecutive </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.MessageQueue_Id}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="DealId">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header class="titleColumn"> Deal Id </mat-header-cell>
+                  <mat-cell *matCellDef="let row" style="width: 50px"> {{row.Deal_Id}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="SetFxId">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header class="titleColumn"> SetFx Id </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <button class="btn btn-principal btn-sm" style="width: 98%;color:indigo; border-color: indigo"
+                      mat-raised-button (click)="viewDetail(row)" title="Detail SetFx">{{row.SetFx_Id}}</button>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="Status">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header class="titleColumn"> Status </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <span *ngIf="row.State=='P'">Pending</span>
+                    <span *ngIf="row.State=='D'">Done</span>
+                    <span *ngIf="row.State=='E'">Error</span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="Action">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header class="titleColumn"> Action </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <span *ngIf="row.Action=='I'">Insert</span>
+                    <span *ngIf="row.Action=='U'">Update</span>
+                    <span *ngIf="row.Action=='D'">Delete</span>
+                    <span *ngIf="row.Action=='N'">Novate</span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="PrincipalAmount">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header class="titleColumn"> Principal Amount
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    {{row.MessageFormat.Swap.Loan.PrincipalAmount}}
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="UserFx">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header class="titleColumn"> User Fx </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    {{row.Users_ShortName}}
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ErrorMessage">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header class="titleColumn"> Error Message
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <span *ngIf="row.State=='E'">
+                      <button type="button" class="btn btn-default btn-sm" (click)="showError(row.ErrorMsg)" title="View Error">
+                        <i class="fa fa-eye"></i> 
+                      </button>
+                    </span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="Operations">
+                  <mat-header-cell *matHeaderCellDef class="titleColumn"> Operations</mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <button type="button" class="btn btn-default btn-sm" (click)="executeError(row)" title="Process" *ngIf="(row.State=='P' && row.Deal_Id=='0') || (row.State=='E') || (row.State=='P' && row.Deal_Id!='0' && row.Action!='I')"
+                      [disabled]="!row.Habilitado">
+                      <i class="fa fa-refresh"></i> 
+                    </button>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="loading">
+                  <mat-footer-cell *matFooterCellDef colspan="9">
+                    Loading data...
+                  </mat-footer-cell>
+                </ng-container>
+                <ng-container matColumnDef="noData">
+                  <mat-footer-cell *matFooterCellDef colspan="9">
+                    No data.
+                  </mat-footer-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                <!--<mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}"></mat-footer-row>
+              <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(dataSource!=null && dataSource.data.length==0)}"></mat-footer-row>-->
+              </mat-table>
+
+              <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" class="titleColumn" showFirstLastButtons></mat-paginator>
+            </div>
+            <!-- END DATATABLE MATERIAL-->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer [config]="_config.configuracion"></app-footer>

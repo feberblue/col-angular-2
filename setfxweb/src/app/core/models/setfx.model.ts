@@ -1,0 +1,91 @@
+import { Swap } from './swap.model';
+
+export interface SetFxModel {
+     MessageQueue_Id: string;
+     SetFx_Id: string;
+     Deal_Id: string;
+     DealType: string;
+     State: string;
+     Action: string;
+     ErrorMsg: string;
+     Message: string;
+     Habilitado: boolean;
+     MessageFormat: {
+          Swap: {
+               SetFx_Id: string;
+               TradeDate: string;
+               Users_Id: string;
+               Comments: string;
+               Depo: {
+                    SetFx_Id: string;
+                    SwapDeals_Id: string;
+                    LegType: string;
+                    FixedRate: string;
+                    AdditiveMargin: string;
+                    Folders_Id: string;
+                    Cpty_Id: string;
+                    TypeOfInstr_Id: string;
+                    MultiplyMargin: string;
+                    Currencies_Id: string;
+                    Basis: string;
+                    Frequency: string;
+                    FixingFrequency: string;
+                    PaymentAt: string;
+                    StartDate: string;
+                    MaturityDate: string;
+                    PrincipalAmount: string;
+                    FixedAmount: string;
+                    AmortizingType: string;
+                    AmortizingRate: string;
+                    AmortizationFrequency: string;
+                    AmortizingEndDate: string;
+                    AmortizingRemainingAmount: string;
+                    ResetLag: string;
+                    PaymentLag: string;
+                    Indexation: string;
+                    InterestCalcMethod: string;
+                    FloatingRates_Id: string;
+                    ClientMargin: string;
+                    Curves_Id_Forward: string;
+                    Curves_Id_Discount_Principal: string;
+                    Curves_Id_Discount_Coupon: string;
+               };
+               Loan: {
+                    SetFx_Id: string;
+                    SwapDeals_Id: string;
+                    LegType: string;
+                    FixedRate: string;
+                    AdditiveMargin: string;
+                    Folders_Id: string;
+                    Cpty_Id: string;
+                    TypeOfInstr_Id: string;
+                    MultiplyMargin: string;
+                    Currencies_Id: string;
+                    Basis: string;
+                    Frequency: string;
+                    FixingFrequency: string;
+                    PaymentAt: string;
+                    StartDate: string;
+                    MaturityDate: string;
+                    PrincipalAmount: string;
+                    FixedAmount: string;
+                    AmortizingType: string;
+                    AmortizingRate: string;
+                    AmortizationFrequency: string;
+                    AmortizingEndDate: string;
+                    AmortizingRemainingAmount: string;
+                    ResetLag: string;
+                    PaymentLag: string;
+                    Indexation: string;
+                    InterestCalcMethod: string;
+                    FloatingRates_Id: string;
+                    ClientMargin: string;
+                    Curves_Id_Forward: string;
+                    Curves_Id_Discount_Principal: string;
+                    Curves_Id_Discount_Coupon: string;
+               }
+          }
+     };
+     Cpty_Name: string;
+     Users_ShortName: string;
+}

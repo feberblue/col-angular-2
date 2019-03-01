@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div style="padding-top: 10px">
+    <div class="space">
+        <div class="card">
+          <h5 class="card-header">
+            Status Services App
+          </h5>
+          <div class="card-body">            
+            <div class="col-sm-12 col-md-12">
+              <div class="table-responsive-sm">
+                <table class="table table-light table-striped table-hover table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>Status</th>                  
+                      <th>Service</th>
+                      <th>Actions Recomender</th>                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of arrayServices">
+                      <td scope="row"><i class="fa fa-circle" [ngStyle]="{'color': item.online}" ></i></td>
+                      <td>{{item.nameService}}</td>
+                      <td>{{item.recomender}}</td>                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<app-footer></app-footer>

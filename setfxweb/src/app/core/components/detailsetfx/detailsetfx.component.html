@@ -1,0 +1,178 @@
+<div mat-dialog-content>
+  <div class="card border-primary">
+    <h5 class="card-header text-white bg-primary">
+      Swap Deal Details
+    </h5>
+    <div class="card-body">
+      <form role="form">
+        <div class="row">
+          <div class="form-group col-12 col-sm-12 col-md-3">
+            <label>SetFX Id</label>
+            <span class="form-control form-control-sm ">{{data.MessageFormat.Swap.SetFx_Id}}</span>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-3">
+            <label>Deal ID</label>
+            <span class="form-control form-control-sm" style="text-align: right">{{data.Deal_Id}}</span>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-2">
+            <label>TradeDate</label>
+            <span class="form-control form-control-sm " style="text-align: right">{{tradeDate}}</span>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-2">
+            <label>Start Date</label>
+            <span class="form-control form-control-sm " style="text-align: right">{{startDate}}</span>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-2">
+            <label>Maturity Date</label>
+            <span class="form-control form-control-sm " style="text-align: right">{{maturityDate}}</span>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="form-group col-12 col-sm-12 col-md-3">
+            <label for="">Principal Amount</label>
+            <span class="form-control form-control-sm" style="text-align: right">{{data.MessageFormat.Swap.Loan.PrincipalAmount}}</span>
+          </div>
+
+
+          <div class="form-group col-12 col-sm-12 col-md-9">
+            <label>Cpty Name</label>
+            <span class="form-control form-control-sm">{{data.Cpty_Name}}</span>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card border-primary">
+              <div class="card-header text-white bg-primary">
+                <b>Loan</b>
+              </div>
+              <div class="card-body">
+                <div class="form-group" *ngIf="data.MessageFormat.Swap.Loan.Indexation=='F'">
+                  <label>Fixed Rate</label>
+                  <span class="form-control form-control-sm" *ngIf="data.MessageFormat.Swap.Loan.Indexation=='F'">
+                    {{data.MessageFormat.Swap.Loan.FixedRate}}
+                  </span>
+                </div>
+                <div class="form-group" *ngIf="data.MessageFormat.Swap.Loan.Indexation=='V'">
+                  <label>Floating Rates</label>
+                  <span class="form-control form-control-sm">
+                    {{data.MessageFormat.Swap.Loan.FloatingRates_Id}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                      <label>Basis</label>
+                      <span class="form-control form-control-sm">
+                        {{basisEnumLoan}}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                      <label>Amortization Type</label>
+                      <span class="form-control form-control-sm">
+                        {{amortizationTypeEnumLoan}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label>Amortization Frecuency</label>
+                      <span class="form-control form-control-sm">
+                        {{amortizationFrecuencyEnumLoan}}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label>Payment At</label>
+                      <span class="form-control form-control-sm">
+                        {{paymentAtEnumLoan}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card border-primary">
+              <div class="card-header text-white bg-primary">
+                <b>Depo</b>
+              </div>
+              <div class="card-body">
+                <div class="form-group" *ngIf="data.MessageFormat.Swap.Depo.Indexation=='F'">
+                  <label for="">Fixed Rate</label>
+                  <span class="form-control form-control-sm" *ngIf="data.MessageFormat.Swap.Depo.Indexation=='F'">
+                    {{data.MessageFormat.Swap.Depo.FixedRate}}
+                  </span>
+                </div>
+                <div class="form-group" *ngIf="data.MessageFormat.Swap.Depo.Indexation=='V'">
+                  <label>Floating Rates</label>
+                  <span class="form-control form-control-sm">
+                    {{data.MessageFormat.Swap.Depo.FloatingRates_Id}}
+                  </span>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                      <label>Basis</label>
+                      <span class="form-control form-control-sm">
+                        {{basisEnumDepo}}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                      <label>Amortization Type</label>
+                      <span class="form-control form-control-sm">
+                        {{amortizationTypeEnumDepo}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label>Amortization Frecuency</label>
+                      <span class="form-control form-control-sm">
+                        {{amortizationFrecuencyEnumDepo}}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6">
+                    <div class="form-group">
+                      <label>Payment At</label>
+                      <span class="form-control form-control-sm">
+                        {{paymentAtEnumDepo}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+</div>
+<div mat-dialog-actions>
+  <!--<button mat-button (click)="onNoClick()">No Thanks</button>-->
+  <button class="btn btn-primary" style="border:1px solid red" mat-button [mat-dialog-close]="data" cdkFocusInitial>Close</button>
+</div>

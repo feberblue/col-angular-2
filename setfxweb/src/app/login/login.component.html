@@ -1,0 +1,43 @@
+<header>
+  <div class="jumbotron jumbotron-fluid">
+    <h1 style="text-align: center">ACCESS SETFXWEB</h1>
+  </div>
+</header>
+<div class="aligner">
+  <mat-card class="aligner-center-item" style="border: red 1px solid">
+    <mat-card-title>
+      <div style="text-align: center">
+        <img src="assets/logocolpatria.svg" width="200">
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <form id="login-form" #lForm="ngForm" [formGroup]="loginForm" (ngSubmit)="submitLogin()" novalidate>
+        <mat-form-field style="width: 100%; margin-bottom: 10px;" [ngClass]="{'mat-input-invalid': submitted && error?.code == 1}">
+          <input matInput type="text" formControlName="username" placeholder="Username" />
+          <mat-hint style="color: red;" *ngIf="submitted && error?.code == 1 && !loginForm.controls.username.hasError('required')">{{error.message}}</mat-hint>
+          <mat-hint style="color: red;" *ngIf="submitted && loginForm.controls.username.hasError('required')">Field is
+            mandatory</mat-hint>
+        </mat-form-field>
+        <mat-form-field style="width: 100%;" [ngClass]="{'mat-input-invalid': submitted && error?.code == 2}">
+          <input matInput type="password" formControlName="password" placeholder="Password" />
+          <mat-hint style="color: red;" *ngIf="submitted && error?.code == 2 && !loginForm.controls.password.hasError('required')">{{error.message}}</mat-hint>
+          <mat-hint style="color: red;" *ngIf="submitted && loginForm.controls.password.hasError('required')">Field is
+            mandatory</mat-hint>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions style="text-align: right;">
+      <button mat-raised-button type="submit" class="btn btn-primary" form="login-form"> Sign In</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<footer class="footer" style="background-color: #515151;; color: white; text-align: center;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12" style="padding:6px" >
+        &copy; 2019  Scotiabank.com Todos los derechos reservados COLPATRIA MULTIBANCA
+      </div>
+    </div>
+  </div>
+</footer>

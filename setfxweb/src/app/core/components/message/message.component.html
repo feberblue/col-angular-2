@@ -1,0 +1,32 @@
+<div mat-dialog-content>
+  <div class="card border-success" *ngIf="messageType=='Success'">
+    <h5 class="card-header text-white bg-success">
+      {{messageType}}
+    </h5>
+    <div class="card-body" style="text-align: justify">
+      {{messageText}}
+    </div>
+  </div>
+
+  <div class="card border-error" *ngIf="messageType=='Error'">
+    <h5 class="card-header text-white bg-danger">
+      {{messageType}}
+    </h5>
+    <div class="card-body" style="text-align: justify">
+      {{messageText}}
+    </div>
+  </div>
+
+  <div class="card border-warning" *ngIf="messageType=='Warning'">
+    <h5 class="card-header text-white bg-warning">
+      {{messageType}}
+    </h5>
+    <div class="card-body" style="text-align: justify; ">
+      <div style="overflow: auto; height: 100px;">{{messageText}}</div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button class="btn" style="border:1px solid #CCC" mat-button [mat-dialog-close]="dataAlert" cdkFocusInitial>Close</button>
+</div>

@@ -1,0 +1,11 @@
+{
+    "production": "false",
+    "url_login": "ws://10.236.4.20:9000",
+    "url_query_swap": "http://10.236.4.20:1421/blotter",
+    "url_query_swap_test": "http://localhost:3000/blotter",
+    "url_proccess_swap": "http://10.236.4.20:1421/reprocess", 
+    "url_proccess_swap_test": "http://localhost:3000/reprocess",    
+    "time_config_token": "300",
+    "time_config": "60",
+    "route_server_files":"//servidor.ip/rutaarchivos"
+}
